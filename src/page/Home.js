@@ -53,12 +53,12 @@ const Home = () => {
       <div className='w-full flex-row justify-center bg-gray-100 p-4 mb-14'>
         {dataEle.length > 0 && (
           <>
-            <SimpleCarousel title={dataEle[0]} slides={restaurantSlidesData} />
-            <SimpleCarousel title={dataEle[1]} slides={happySlidesData} />
-            <SimpleCarousel title={dataEle[2]} slides={foodSlidesData} />
-            <SimpleCarousel title={dataEle[3]} slides={rentalSlidesData} />
-            <SimpleCarousel title={dataEle[4]} slides={spaSlidesData} />
-            <SimpleCarousel title={dataEle[5]} slides={skiliftSlidesData} />
+            <SimpleCarousel title={dataEle[1]} slides={restaurantSlidesData} />
+            <SimpleCarousel title={dataEle[2]} slides={happySlidesData} />
+            <SimpleCarousel title={dataEle[3]} slides={foodSlidesData} />
+            <SimpleCarousel title={dataEle[4]} slides={rentalSlidesData} />
+            <SimpleCarousel title={dataEle[5]} slides={spaSlidesData} />
+            <SimpleCarousel title={dataEle[6]} slides={skiliftSlidesData} />
           </>
         )}
       </div>
