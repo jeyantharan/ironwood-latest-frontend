@@ -24,8 +24,8 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/place/allPlace');
-      const response1 = await axios.get(`http://localhost:8080/element/header/${lang}`);
+      const response = await axios.get('https://ironwood-backend.vercel.app/place/allPlace');
+      const response1 = await axios.get(`https://ironwood-backend.vercel.app/element/header/${lang}`);
       
       setDataC(response1.data || []); // Ensure it's an array
 
