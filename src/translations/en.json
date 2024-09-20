@@ -1,0 +1,15 @@
+{
+    "brand_name": "IRONWOOD",
+    "menu": {
+      "home": "Home",
+      "restaurants": "Restaurants",
+      "happy_hours": "Happy Hours",
+      "food_shops": "Food Shops",
+      "rentals": "Rentals",
+      "spa": "Spa",
+      "ski_lifts": "Ski Lifts",
+      "weather": "Weather",
+      "events": "Events"
+    }
+  }
+  
