@@ -19,7 +19,7 @@ const AppBar = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`https://ironwood-backend.vercel.app/element/header/${lang}`);
+      const response = await axios.get(`https://ironwood-latest-backend.vercel.app/element/header/${lang}`);
       setData(response.data);
     } catch (err) {
       setError(err.message);
@@ -52,43 +52,28 @@ const AppBar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Restaurants" onClick={handleMenuItemClick} className="menu">
+                    <Link to="/Element1" onClick={handleMenuItemClick} className="menu">
                       {data[1]}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Happy-Hours" onClick={handleMenuItemClick} className="menu">
+                    <Link to="/Element2" onClick={handleMenuItemClick} className="menu">
                       {data[2]}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Food-Shops" onClick={handleMenuItemClick} className="menu">
+                    <Link to="/Element3" onClick={handleMenuItemClick} className="menu">
                       {data[3]}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Rentals" onClick={handleMenuItemClick} className="menu">
+                    <Link to="https://www.3bmeteo.com/meteo/livigno" target="_blank" onClick={handleMenuItemClick} className="menu">
                       {data[4]}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Spa" onClick={handleMenuItemClick} className="menu">
-                      {data[5]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/SkiLifts" onClick={handleMenuItemClick} className="menu">
-                      {data[6]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="https://www.3bmeteo.com/meteo/livigno" target="_blank" onClick={handleMenuItemClick} className="menu">
-                      {data[7]}
-                    </Link>
-                  </li>
-                  <li>
                     <Link to="https://www.livigno.eu/eventi" target="_blank" onClick={handleMenuItemClick} className="menu">
-                      {data[8]}
+                      {data[5]}
                     </Link>
                   </li>
                 </>
@@ -124,29 +109,20 @@ const AppBar = () => {
               <Link to="/" onClick={handleMenuItemClick} className="menu">
                 {data[0]}
               </Link>
-              <Link to="/Restaurants" onClick={handleMenuItemClick} className="menu">
+              <Link to="/Element1" onClick={handleMenuItemClick} className="menu">
                 {data[1]}
               </Link>
-              <Link to="/Happy-Hours" onClick={handleMenuItemClick} className="menu">
+              <Link to="/Element2" onClick={handleMenuItemClick} className="menu">
                 {data[2]}
               </Link>
-              <Link to="/Food-Shops" onClick={handleMenuItemClick} className="menu">
+              <Link to="/Element3" onClick={handleMenuItemClick} className="menu">
                 {data[3]}
               </Link>
-              <Link to="/Rentals" onClick={handleMenuItemClick} className="menu">
+              <Link to="https://www.3bmeteo.com/meteo/livigno" target="_blank" onClick={handleMenuItemClick} className="menu">
                 {data[4]}
               </Link>
-              <Link to="/Spa" onClick={handleMenuItemClick} className="menu">
-                {data[5]}
-              </Link>
-              <Link to="/SkiLifts" onClick={handleMenuItemClick} className="menu">
-                {data[6]}
-              </Link>
-              <Link to="https://www.3bmeteo.com/meteo/livigno" target="_blank" onClick={handleMenuItemClick} className="menu">
-                {data[7]}
-              </Link>
               <Link to="https://www.livigno.eu/eventi" target="_blank" onClick={handleMenuItemClick} className="menu">
-                {data[8]}
+                {data[5]}
               </Link>
             </>
           ) : (

@@ -5,6 +5,10 @@ import { withTranslation } from 'react-google-multi-lang';
 const lang = sessionStorage.getItem("lang") || 'En'; // Default to 'En' if not set
 
 const SimpleCarousel = ({ title, slides }) => {
+console.log("slides");
+
+  console.log(slides);
+  
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToNextSlide = () => {

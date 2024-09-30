@@ -15,7 +15,7 @@ function Restaurant() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`https://ironwood-backend.vercel.app/place/${_id}`);
+      const response = await axios.get(`https://ironwood-latest-backend.vercel.app/place/${_id}`);
       console.log("API Response:", response.data); // Log the entire response
 
       if (response.data && response.data[lang]) {

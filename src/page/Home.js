@@ -9,12 +9,15 @@ const Home = () => {
   const [dataEle, setDataEle] = useState([]);
   const [error, setError] = useState(null);
   const [separatedData, setSeparatedData] = useState({});
+  const [dataA, setDataA] = useState(null);
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://ironwood-backend.vercel.app/place/allPlace');
-      const responseEle = await axios.get(`https://ironwood-backend.vercel.app/element/header/${lang}`);
+      const response = await axios.get('https://ironwood-latest-backend.vercel.app/place/allPlace');
+      const responseEle = await axios.get(`https://ironwood-latest-backend.vercel.app/element/header/${lang}`);
+      const responseEleEn = await axios.get(`https://ironwood-latest-backend.vercel.app/element/header/En`);
 
+      setDataA(responseEleEn.data);
       setDataEle(responseEle.data);
 
       // Separate the data by type
@@ -39,13 +42,10 @@ const Home = () => {
     fetchData();
   }, [lang]); // Fetch data whenever the language changes
 
-  // Ensure that dataEle has the expected length before accessing it
-  const restaurantSlidesData = separatedData.Restaurants || [];
-  const happySlidesData = separatedData['Happy-Hours'] || [];
-  const foodSlidesData = separatedData['Food-Shops'] || [];
-  const rentalSlidesData = separatedData.Rentals || [];
-  const spaSlidesData = separatedData.Spa || [];
-  const skiliftSlidesData = separatedData.SkiLifts || [];
+  // Ensure that dataEle and dataA are available before accessing them
+  const restaurantSlidesData = separatedData[dataA?.[1]] || [];
+  const happySlidesData = separatedData[dataA?.[2]] || [];
+  const foodSlidesData = separatedData[dataA?.[3]] || [];
 
   return (
     <div>
@@ -56,9 +56,6 @@ const Home = () => {
             <SimpleCarousel title={dataEle[1]} slides={restaurantSlidesData} />
             <SimpleCarousel title={dataEle[2]} slides={happySlidesData} />
             <SimpleCarousel title={dataEle[3]} slides={foodSlidesData} />
-            <SimpleCarousel title={dataEle[4]} slides={rentalSlidesData} />
-            <SimpleCarousel title={dataEle[5]} slides={spaSlidesData} />
-            <SimpleCarousel title={dataEle[6]} slides={skiliftSlidesData} />
           </>
         )}
       </div>

@@ -3,14 +3,20 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const lang = sessionStorage.getItem("lang") || 'En'; // Default to 'En' if not set
+console.log(lang);
+
 
 const CardList = ({ title, cards }) => {
+  console.log("naaaan");
+  
+  console.log(cards);
+  
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
 
   const fetchData = async () => {
     try {
-      const responseC = await axios.get(`https://ironwood-backend.vercel.app/element/card/${lang}`);
+      const responseC = await axios.get(`https://ironwood-latest-backend.vercel.app/element/card/${lang}`);
       setData(responseC.data || []); // Ensure data is an array
     } catch (err) {
       setError(err.message);
@@ -33,6 +39,7 @@ const CardList = ({ title, cards }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
           {cards && cards.length > 0 ? (
             cards.map((card) => {
+              
               const cardData = card[lang]; // Access the language-specific data
 
               if (!cardData) {

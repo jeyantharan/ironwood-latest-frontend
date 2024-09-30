@@ -21,14 +21,18 @@ function App() {
   const [error, setError] = useState(null);
   const [separatedData, setSeparatedData] = useState({});
   const [dataC, setDataC] = useState([]);
+  const [dataA, setDataA] = useState([]);
+
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://ironwood-backend.vercel.app/place/allPlace');
-      const response1 = await axios.get(`https://ironwood-backend.vercel.app/element/header/${lang}`);
+      const response = await axios.get('https://ironwood-latest-backend.vercel.app/place/allPlace');
+      const response1 = await axios.get(`https://ironwood-latest-backend.vercel.app/element/header/${lang}`);
+      const Enonly = await axios.get(`https://ironwood-latest-backend.vercel.app/element/header/En`);
       
-      setDataC(response1.data || []); // Ensure it's an array
-
+      
+      setDataC(Enonly.data || []); // Ensure it's an array
+      setDataA(response1.data || [])
       // Separate the data by type
       const separated = response.data.reduce((acc, item) => {
         const type = item.Type;
@@ -37,7 +41,7 @@ function App() {
         }
         acc[type].push(item);
         return acc;
-      }, {});
+      }, {});      
 
       setData(response.data);
       setSeparatedData(separated);
@@ -51,14 +55,16 @@ function App() {
   useEffect(() => {
     fetchData();
   }, [lang]); // Add lang as a dependency to fetch new data if language changes
-
+  
+  
   // Default to empty array if the type is not present
-  const restaurantData = separatedData.Restaurants || [];
-  const happyData = separatedData['Happy-Hours'] || [];
-  const foodData = separatedData['Food-Shops'] || [];
-  const rentelData = separatedData.Rentals || [];
-  const spaData = separatedData.Spa || [];
-  const skiliftData = separatedData.SkiLifts || [];
+  const d1 = separatedData[dataC[1]] || [];
+  const d2 = separatedData[dataC[2]] || [];  
+  const d3 = separatedData[dataC[3]] || [];
+  // const rentelData = separatedData.Rentals || [];
+  // const spaData = separatedData.Spa || [];
+  // const skiliftData = separatedData.SkiLifts || [];
+  
 
   return (
     <Router>
@@ -69,12 +75,12 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Restaurants" element={<Card title={dataC[1] || "Restaurants"} cards={restaurantData} />} />
-        <Route path="/Happy-Hours" element={<Card title={dataC[2] || "Happy Hours"} cards={happyData} />} />
-        <Route path="/Food-Shops" element={<Card title={dataC[3] ||"Food Shops"} cards={foodData} />} />
-        <Route path="/Rentals" element={<Card title={dataC[4] ||"Rentals"} cards={rentelData} />} />
+        <Route path="/Element1" element={<Card title={dataA[1] || "Loading.."} cards={d1} />} />
+        <Route path="/Element2" element={<Card title={dataA[2] || "Loading.."} cards={d2} />} />
+        <Route path="/Element3" element={<Card title={dataA[3] ||"Loading.."} cards={d3} />} />
+        {/* <Route path="/Rentals" element={<Card title={dataC[4] ||"Rentals"} cards={rentelData} />} />
         <Route path="/Spa" element={<Card title={dataC[5] || "Spa"} cards={spaData} />} />
-        <Route path="/SkiLifts" element={<Card title={dataC[6] ||"Ski Lifts"} cards={skiliftData} />} />
+        <Route path="/SkiLifts" element={<Card title={dataC[6] ||"Ski Lifts"} cards={skiliftData} />} /> */}
         <Route path="place/:_id" element={<Restaurant />} />
         <Route path="/Happy" element={<Happy />} />
         <Route path="/Food" element={<Food />} />
