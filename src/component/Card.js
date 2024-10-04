@@ -7,7 +7,6 @@ console.log(lang);
 
 
 const CardList = ({ title, cards }) => {
-  console.log("naaaan");
   
   console.log(cards);
   
@@ -16,7 +15,7 @@ const CardList = ({ title, cards }) => {
 
   const fetchData = async () => {
     try {
-      const responseC = await axios.get(`https://ironwood-latest-backend.vercel.app/element/card/${lang}`);
+      const responseC = await axios.get(`http://localhost:8080/element/card/${lang}`);
       setData(responseC.data || []); // Ensure data is an array
     } catch (err) {
       setError(err.message);

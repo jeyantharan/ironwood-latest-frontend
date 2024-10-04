@@ -11,17 +11,15 @@ function Restaurant() {
 
   const { _id } = useParams();
   const lang = sessionStorage.getItem("lang") || 'En'; // Default to 'En' if not set
-  console.log("Selected language:", lang);
 
   const fetchData = async () => {
     try {
       const response = await axios.get(`https://ironwood-latest-backend.vercel.app/place/${_id}`);
-      console.log("API Response:", response.data); // Log the entire response
 
       if (response.data && response.data[lang]) {
         setData(response.data[lang]);
       } else {
-        setError('No data found for the selected language.');
+        setError('No data found.');
       }
       setLoading(false);
     } catch (err) {
@@ -81,6 +79,9 @@ function Restaurant() {
         </button>
         <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
           <a href={data.DirMap} className="hover:underline">GET DIRECTIONS</a>
+        </button>
+        <button className="bg-red-500 text-white px-4 py-2 rounded hover:bg-green-600">
+          <a href={data.Link} target="_blank" className="hover:underline">Link</a>
         </button>
       </div>
 

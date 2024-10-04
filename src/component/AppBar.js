@@ -5,6 +5,8 @@ import axios from "axios";
 const AppBar = () => {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState(null);
+  const [dataL, setDataL] = useState(null);
+
   const [error, setError] = useState(null);
 
   const lang = sessionStorage.getItem("lang") || 'En';
@@ -20,7 +22,10 @@ const AppBar = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(`https://ironwood-latest-backend.vercel.app/element/header/${lang}`);
+      const response1 = await axios.get("https://ironwood-latest-backend.vercel.app/element/getLink");
       setData(response.data);
+      setDataL(response1.data);
+
     } catch (err) {
       setError(err.message);
     }
@@ -67,13 +72,38 @@ const AppBar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="https://www.3bmeteo.com/meteo/livigno" target="_blank" onClick={handleMenuItemClick} className="menu">
+                    <Link to="/Element4" onClick={handleMenuItemClick} className="menu">
                       {data[4]}
                     </Link>
                   </li>
                   <li>
-                    <Link to="https://www.livigno.eu/eventi" target="_blank" onClick={handleMenuItemClick} className="menu">
+                    <Link to="/Element5" onClick={handleMenuItemClick} className="menu">
                       {data[5]}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/Element6" onClick={handleMenuItemClick} className="menu">
+                      {data[6]}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/Element7" onClick={handleMenuItemClick} className="menu">
+                      {data[7]}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/Element8" onClick={handleMenuItemClick} className="menu">
+                      {data[8]}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={dataL.Weather} target="_blank" onClick={handleMenuItemClick} className="menu">
+                      {data[9]}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={dataL.Event} target="_blank" onClick={handleMenuItemClick} className="menu">
+                      {data[10]}
                     </Link>
                   </li>
                 </>
@@ -106,7 +136,9 @@ const AppBar = () => {
         <div className="hidden xl:flex space-x-8">
           {data ? (
             <>
-              <Link to="/" onClick={handleMenuItemClick} className="menu">
+            <div className="display:block">
+            <div className="pb-3">
+            <Link to="/" onClick={handleMenuItemClick} className="menu">
                 {data[0]}
               </Link>
               <Link to="/Element1" onClick={handleMenuItemClick} className="menu">
@@ -118,12 +150,34 @@ const AppBar = () => {
               <Link to="/Element3" onClick={handleMenuItemClick} className="menu">
                 {data[3]}
               </Link>
-              <Link to="https://www.3bmeteo.com/meteo/livigno" target="_blank" onClick={handleMenuItemClick} className="menu">
+              <Link to="/Element4" onClick={handleMenuItemClick} className="menu">
                 {data[4]}
               </Link>
-              <Link to="https://www.livigno.eu/eventi" target="_blank" onClick={handleMenuItemClick} className="menu">
+              <Link to="/Element5" onClick={handleMenuItemClick} className="menu">
                 {data[5]}
               </Link>
+              <Link to="/Element6" onClick={handleMenuItemClick} className="menu">
+                {data[6]}
+              </Link>
+              <Link to="/Element7" onClick={handleMenuItemClick} className="menu">
+                {data[7]}
+              </Link>
+              <Link to="/Element8" onClick={handleMenuItemClick} className="menu">
+                {data[8]}
+              </Link>
+              <Link to={dataL.Weather} target="_blank" onClick={handleMenuItemClick} className="menu">
+                {data[9]}
+              </Link>
+            </div>
+            
+            <div>
+            <Link to={dataL.Event} target="_blank" onClick={handleMenuItemClick} className="menu">
+                {data[10]}
+              </Link>
+            </div>
+            </div>
+             
+             
             </>
           ) : (
             <span>Loading...</span>

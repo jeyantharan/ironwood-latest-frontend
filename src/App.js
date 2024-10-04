@@ -61,9 +61,12 @@ function App() {
   const d1 = separatedData[dataC[1]] || [];
   const d2 = separatedData[dataC[2]] || [];  
   const d3 = separatedData[dataC[3]] || [];
-  // const rentelData = separatedData.Rentals || [];
-  // const spaData = separatedData.Spa || [];
-  // const skiliftData = separatedData.SkiLifts || [];
+  const d4 = separatedData[dataC[4]] || [];
+  const d5 = separatedData[dataC[5]] || [];  
+  const d6 = separatedData[dataC[6]] || [];
+  const d7 = separatedData[dataC[7]] || [];
+  const d8 = separatedData[dataC[8]] || [];  
+
   
 
   return (
@@ -78,9 +81,11 @@ function App() {
         <Route path="/Element1" element={<Card title={dataA[1] || "Loading.."} cards={d1} />} />
         <Route path="/Element2" element={<Card title={dataA[2] || "Loading.."} cards={d2} />} />
         <Route path="/Element3" element={<Card title={dataA[3] ||"Loading.."} cards={d3} />} />
-        {/* <Route path="/Rentals" element={<Card title={dataC[4] ||"Rentals"} cards={rentelData} />} />
-        <Route path="/Spa" element={<Card title={dataC[5] || "Spa"} cards={spaData} />} />
-        <Route path="/SkiLifts" element={<Card title={dataC[6] ||"Ski Lifts"} cards={skiliftData} />} /> */}
+        <Route path="/Element4" element={<Card title={dataA[4] || "Loading.."} cards={d4} />} />
+        <Route path="/Element5" element={<Card title={dataA[5] || "Loading.."} cards={d5} />} />
+        <Route path="/Element6" element={<Card title={dataA[6] ||"Loading.."} cards={d6} />} />
+        <Route path="/Element7" element={<Card title={dataA[7] || "Loading.."} cards={d7} />} />
+        <Route path="/Element8" element={<Card title={dataA[8] || "Loading.."} cards={d8} />} />
         <Route path="place/:_id" element={<Restaurant />} />
         <Route path="/Happy" element={<Happy />} />
         <Route path="/Food" element={<Food />} />

@@ -8,9 +8,7 @@ function HomeHeading() {
         <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-4">
           Welcome to Ironwood!
         </h1>
-        <p className="text-base md:text-lg lg:text-xl text-gray-700 text-center">
-          We're glad to have you here. Explore our site to find the best restaurants, events, and services in the area.
-        </p>
+        
       </div>
     </div>
   )
