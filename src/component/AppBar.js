@@ -37,7 +37,7 @@ const AppBar = () => {
 
   return (
     <nav className="w-full bg-slate-600">
-      <div className="flex text-white justify-between items-center w-5/6 mx-auto h-24 px-4">
+      <div className="flex text-white justify-between items-center w-5/6 mx-auto h-24 px-1">
         {/* Brand Name */}
         <div className="font-semibold text-3xl">IRONWOOD</div>
 
