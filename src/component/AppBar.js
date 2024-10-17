@@ -133,7 +133,7 @@ const AppBar = () => {
         </button>
 
         {/* Navigation Links (desktop view) */}
-        <div className="hidden xl:flex space-x-4">
+        <div className="hidden xl:flex">
           {data ? (
             <>
             <div className="display:block">
